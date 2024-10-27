@@ -1,2 +1,2 @@
 # FileGo
-Web-application for file chenging
+Web-application for file exchanging
