@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WelcomePageConfig(AppConfig):
+class Main(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'welcome_page'
+    name = 'main'
