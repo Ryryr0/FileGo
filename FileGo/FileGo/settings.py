@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.Main',
-    'authorization.apps.AuthorizationConfig',
+    'users.apps.UsersConfig',
     'messanger.apps.MessangerConfig',
     'user_profile.apps.UserProfileConfig',
 ]
@@ -75,13 +75,6 @@ WSGI_APPLICATION = 'FileGo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -133,3 +126,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Defaults for authorization
+LOGIN_REDIRECT_URL = 'main:welcome-page'
+LOGOUT_REDIRECT_URL = 'main:welcome-page'
+LOGIN_URL = 'users:login'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'users.authentication.EmailAuthBackend',
+]

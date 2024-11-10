@@ -1,4 +1,6 @@
 from django.http import HttpResponseNotFound, Http404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.shortcuts import HttpResponse
 from django.urls import reverse
@@ -19,6 +21,7 @@ data_db = [
 ]
 
 
+@login_required
 def index(request):
     data = {
         'title': 'FileGo main page',
@@ -26,6 +29,14 @@ def index(request):
         'posts': data_db,
     }
     return render(request, 'main/index.html', context=data)
+
+
+def welcome_page(request):
+    return render(request, 'main/welcome_page.html')
+
+
+class NewsLine(LoginRequiredMixin):
+    pass
 
 
 def about(request):
