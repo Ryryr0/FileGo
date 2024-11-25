@@ -21,14 +21,14 @@ data_db = [
 ]
 
 
-@login_required
+# @login_required(login_url='main:welcome_page')
 def index(request):
     data = {
         'title': 'FileGo main page',
         'menu': menu,
         'posts': data_db,
     }
-    return render(request, 'main/index.html', context=data)
+    return render(request, 'main/index.html')
 
 
 def welcome_page(request):
@@ -37,26 +37,6 @@ def welcome_page(request):
 
 class NewsLine(LoginRequiredMixin):
     pass
-
-
-def about(request):
-    return render(request, 'main/about.html', {'title': 'About FileGo', 'menu': menu})
-
-
-def show_post(request, post_id):
-    return HttpResponse(f'Showing article with id = {post_id}')
-
-
-def add_post(request):
-    return HttpResponse("Adding post")
-
-
-def contact(request):
-    return HttpResponse("Contacting")
-
-
-def login(request):
-    return HttpResponse("Log in")
 
 
 def page_not_found(request, exception):

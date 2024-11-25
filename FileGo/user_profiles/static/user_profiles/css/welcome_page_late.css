@@ -21,8 +21,7 @@ header {
     font-size: 3rem;
 }
 
-/* menu */
-.menu {
+/* .menu {
     border-bottom: 1px solid rgba(100, 100, 100, 0.5);
     padding: 1em;
     display: flex;
@@ -30,7 +29,6 @@ header {
     justify-content: end;
 }
 
-/* profile */
 .menu .profile {
     width: 8em;
     margin-right: 1em;
@@ -45,7 +43,7 @@ header {
     height: 3.5em;
     background-color: rgba(100, 100, 100, 0.5);
     border-radius: 50%;
-}
+} */
 
 /* main */
 main{

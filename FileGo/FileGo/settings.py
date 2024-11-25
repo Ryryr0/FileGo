@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'main.apps.Main',
     'users.apps.UsersConfig',
     'messanger.apps.MessangerConfig',
-    'user_profile.apps.UserProfileConfig',
+    'user_profiles.apps.UserProfilesConfig',
 ]
 
 MIDDLEWARE = [
@@ -87,7 +87,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -121,16 +120,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # Defaults for authorization
-LOGIN_REDIRECT_URL = 'main:welcome-page'
-LOGOUT_REDIRECT_URL = 'main:welcome-page'
+LOGIN_REDIRECT_URL = 'user_profiles:user_page'
+LOGOUT_REDIRECT_URL = 'main:welcome_page'
 LOGIN_URL = 'users:login'
 
 AUTHENTICATION_BACKENDS = [
