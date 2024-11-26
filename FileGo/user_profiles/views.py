@@ -7,8 +7,15 @@ from django.views.generic import UpdateView
 from .forms import ProfileSettingsForm
 
 
-def user_page(request):
-    return render(request, 'user_profiles/user_page.html')
+test_data = {
+    'title': 'Profile',
+    'profile_img': '',
+    'user_name': 'Artem',
+}
+
+
+def profile(request):
+    return render(request, 'user_profiles/profile.html', context=test_data)
 
 
 class ProfileSettings(LoginRequiredMixin, UpdateView):

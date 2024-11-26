@@ -1,50 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
-*{
-    margin: 0;
-    font-family: "Roboto", sans-serif;
-}
-
-/* header */
-header {
-    height: 20em;
-    border: 1px solid rgba(255, 192, 203, 0);
-    background-color: rgb(200, 200, 200);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.website-name {
-    width: fit-content;
-    height: fit-content;
-    font-size: 3rem;
-}
-
-/* .menu {
-    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
-    padding: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-}
-
-.menu .profile {
-    width: 8em;
-    margin-right: 1em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.profile img {
-    width: 3.5em;
-    height: 3.5em;
-    background-color: rgba(100, 100, 100, 0.5);
-    border-radius: 50%;
-} */
-
 /* main */
 main{
     display: flex;
@@ -74,11 +27,11 @@ main{
 
 /* add blocktext */
 .add-blocktext {
-    content: '+';
+    content: '';
     width: 15em;
     height: 15em;
     padding: 1.5em;
-    border: 1px dashed rgb(100, 100, 100, 0.5);
+    border: 1px dashed var(--main-border-color);
     border-radius: 1em;
     display: flex;
     flex-direction: column;
@@ -87,10 +40,11 @@ main{
     transition: 0.1s linear;
 }
 
+
 .first-line, .second-line {
     width: 7em;
     height: 0.3em;
-    background-color: rgb(214, 214, 214);
+    background-color: var(--button-color);
     border-radius: 0.3em;
 }
 
@@ -113,14 +67,14 @@ main{
     width: 15em;
     height: 15em;
     padding: 1.5em;
-    border: 1px solid rgb(100, 100, 100);
+    border: 1px solid var(--main-border-color);
     border-radius: 1em;
     transition: 0.1s linear;
     position: relative;
 }
 
 .blocktext-name {
-    font-size: 1.6em;
+    font-size: var(--font-size-mid);
 }
 
 .blocktext .main-text{
@@ -151,13 +105,4 @@ main{
     border-radius: 1em;
     text-decoration: none;
     z-index: -1;
-}
-
-/* footer */
-footer {
-    height: 20em;
-    border-top: 1px solid rgba(100, 100, 100, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
