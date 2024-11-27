@@ -1,5 +1,6 @@
+from django.contrib.auth import logout
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
@@ -17,4 +18,8 @@ class RegisterUser(CreateView):
     template_name = 'users/register.html'
     extra_context = {'title': 'Registration'}
     success_url = reverse_lazy('users:login')
-    
+
+
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect('/')

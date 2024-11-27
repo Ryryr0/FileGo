@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'messanger.apps.MessangerConfig',
     'user_profiles.apps.UserProfilesConfig',
+    'posts.apps.PostsConfig',
 ]
 
 MIDDLEWARE = [
@@ -96,10 +97,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 4,
+        },
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
@@ -128,7 +132,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Defaults for authorization
-LOGIN_REDIRECT_URL = 'user_profiles:user_page'
+LOGIN_REDIRECT_URL = 'user_profiles:profile'
 LOGOUT_REDIRECT_URL = 'main:welcome_page'
 LOGIN_URL = 'users:login'
 

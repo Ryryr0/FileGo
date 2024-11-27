@@ -1,21 +1,25 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, CreateView
 
 from .forms import ProfileSettingsForm
 
 
-test_data = {
-    'title': 'Profile',
-    'profile_img': '',
-    'user_name': 'Artem',
-}
-
-
+@login_required
 def profile(request):
-    return render(request, 'user_profiles/profile.html', context=test_data)
+    data = {
+        'title': 'Profile',
+        'user_name': request.user.username,
+        'profile_img': '',
+    }
+    return render(request, 'user_profiles/profile.html', context=data)
+
+
+class ProfilePage(CreateView, LoginRequiredMixin):
+    pass
 
 
 class ProfileSettings(LoginRequiredMixin, UpdateView):
