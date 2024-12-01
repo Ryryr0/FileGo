@@ -74,6 +74,7 @@ main{
 }
 
 .blocktext-name {
+    overflow: hidden;
     font-size: var(--font-size-mid);
 }
 
@@ -88,12 +89,12 @@ main{
     transition: 0.1s linear;
 }
 
-.blocktext text{
+/* .blocktext text{
     position: relative;
     user-select: text;
     -webkit-user-select: text;
     cursor: text;
-}
+} */
 
 .blocktext .overlay-link,
 .add-blocktext .overlay-link{

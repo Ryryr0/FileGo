@@ -4,7 +4,7 @@
     --main-bg-color: rgb(200, 200, 200);
     --main-border-color: rgba(100, 100, 100, 0.5);
 
-    --main-text-color: black;
+    --main-text-color: rgb(16, 16, 16);
     --highlight-text-color: #ffa726;
 
     --button-color: rgb(200, 200, 200);
@@ -14,10 +14,10 @@
 
     --font-size-main: 1rem;
     --font-size-big: 2.5rem;
-    --font-size-mid: 1.2rem;
+    --font-size-mid: 1.5rem;
     --font-size-low: 0.8rem;
 
-    --white: rgb(246, 247, 247);
+    --white: rgb(250, 250, 250);
     --black: rgb(16, 16, 16);
 }
 
@@ -77,10 +77,11 @@ header {
     top: 4em;
     right: 10em;
     width: 16em;
-    background: var(--main-bg-color);
+    background-color: var(--main-bg-color);
     border: 1px solid var(--main-border-color);
     border-radius: 0px 0px 10px 10px;
     padding: 10px;
+    z-index: 10;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 

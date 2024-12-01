@@ -3,22 +3,26 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView, CreateView
+from django.views.generic import UpdateView, CreateView, ListView
 
 from .forms import ProfileSettingsForm
+from posts.models import Post
 
 
 @login_required
 def profile(request):
+    posts = Post.objects.filter(author=request.user)
     data = {
         'title': 'Profile',
-        'user_name': request.user.username,
+        'user_name': request.user.get_username(),
         'profile_img': '',
+        'posts': posts,
     }
+
     return render(request, 'user_profiles/profile.html', context=data)
 
 
-class ProfilePage(CreateView, LoginRequiredMixin):
+class ProfilePage(ListView, LoginRequiredMixin):
     pass
 
 

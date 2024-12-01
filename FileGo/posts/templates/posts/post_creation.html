@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" href="{% static 'posts/css/post_creation.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container">
+            <h1>Create a Post</h1>
+            <form id="postForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}" />
+                <!-- Title -->
+                <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+                    {{ form.title }}
+                </div>
+
+                <!-- Privacy -->
+                <div class="form-group">
+                    <label for="{{ form.is_published.id_for_label }}">{{ form.is_published.label }}</label>
+                    {{ form.is_published }}
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                    <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+                    {{ form.content }}
+                </div>
+
+                <!-- File Upload -->
+                <div class="form-group">
+                    <label for="{{ form.file.id_for_label }}">{{ form.file.label }}</label>
+                    {{ form.file }}
+                    <div id="fileDropZone" class="drag-drop">
+                        Drag and drop your file here or click below to upload
+                    </div>
+                    <button type="button" id="addFileBtn" class="btn-add-file">Add a File</button>
+                    <p id="fileName" class="file-name"></p>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit">Create Post</button>
+            </form>
+
+            <!-- <form method="post" class="post-creation my-form" enctype="multipart/form-data">
+                <h2 class="form-title">Post Creation</h2>
+                
+                
+                {% for f in form %}
+                <div class="form-group">
+                    <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                    {{ f }}
+                    {% if f.errors %}
+                    <div class="error">
+                        {% for error in f.errors %}
+                        <p>- {{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="form-group">
+                    <button type="submit" class="form-button">Post</button>
+                </div>
+            </form> -->
+        </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'posts/js/post_creation.js' %}"></script>
+{% endblock %}
