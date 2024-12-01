@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load get_only_file_name %}
 
 {% block style %}
     <link type="text/css" rel="stylesheet" href="{% static 'posts/css/post_creation.css' %}">
@@ -8,7 +9,7 @@
 {% block content %}
     <main>
         <div class="container">
-            <h1>Create a Post</h1>
+            <h1>Edit Your Post</h1>
             <form id="postForm" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="hidden" name="next" value="{{ next }}" />
@@ -42,7 +43,7 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn-submit">Create Post</button>
+                <button type="submit" class="btn-submit">Edit Post</button>
             </form>
         </div>
     </main>

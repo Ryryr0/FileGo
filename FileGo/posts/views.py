@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from .forms import PostCreationForm
 from .models import Post, PostFiles
@@ -53,3 +53,24 @@ class ShowPost(LoginRequiredMixin, DetailView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
+
+
+class EditPost(LoginRequiredMixin, UpdateView):
+    model = Post
+    form_class = PostCreationForm
+    template_name = 'posts/edit_post.html'
+    slug_url_kwarg = 'post_slug'
+    context_object_name = 'post'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = context['post'].title
+        context['user_name'] = self.request.user.get_username()
+        if self.request.user != context['post'].author:
+            context['post'] = Post()
+        return context
+
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
+

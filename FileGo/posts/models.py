@@ -57,7 +57,7 @@ class Post(models.Model):
         return PostFiles.objects.filter(post=self)
 
     def get_edit_url(self):
-        pass
+        return reverse('posts:edit_post', kwargs={'post_slug': self.slug})
 
 
 class PostFiles(models.Model):
