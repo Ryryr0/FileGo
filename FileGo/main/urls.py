@@ -3,10 +3,10 @@ from . import views, converters
 
 
 app_name = 'main'
-register_converter(converters.ForDigitYearConvertor, "year4")
 
 
 urlpatterns = [
-    path('', views.welcome_page, name='welcome_page'),
-    path('home', views.index, name='home'),
+    path('', views.NewsLine.as_view(), name='home'),
+    path('<str:q>', views.NewsLine.as_view(), name='search_home'),
+    path('welcome', views.welcome_page, name='welcome_page'),
 ]

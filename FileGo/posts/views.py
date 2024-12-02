@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from .forms import PostCreationForm
 from .models import Post, PostFiles
@@ -17,6 +17,8 @@ class PostCreator(CreateView, LoginRequiredMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['data'] = self.get_data()
+        context['title'] = 'Post Creation'
+        context['user_name'] = self.request.user.get_username()
         return context
 
     def form_valid(self, form):
@@ -61,6 +63,7 @@ class EditPost(LoginRequiredMixin, UpdateView):
     template_name = 'posts/edit_post.html'
     slug_url_kwarg = 'post_slug'
     context_object_name = 'post'
+    success_url = reverse_lazy('user_profiles:profile')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -70,7 +73,10 @@ class EditPost(LoginRequiredMixin, UpdateView):
             context['post'] = Post()
         return context
 
-
     def get_object(self, queryset=None):
         return get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
 
+
+class DeletePost(LoginRequiredMixin, DeleteView):
+    model = Post
+    success_url = reverse_lazy('user_profiles:profile')

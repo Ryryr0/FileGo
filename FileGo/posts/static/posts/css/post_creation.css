@@ -37,7 +37,11 @@ select {
 }
 
 .text-input {
-    height: 10em;
+    vertical-align: top;
+    line-height: normal;
+    padding: 8px;
+    resize: none;
+    overflow: auto;
 }
 
 #fileInput {
@@ -62,7 +66,7 @@ select {
     border-color: var(--main-border-color);
 }
 
-.btn-add-file, .btn-submit {
+.btn-add-file, .btn-submit, .btn-delete {
     display: inline-block;
     width: 100%;
     padding: 12px;
@@ -70,6 +74,7 @@ select {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .btn-add-file {
@@ -84,4 +89,20 @@ select {
 
 .btn-add-file:hover {
     background-color: var(--button-hover-color);
+}
+
+.btn-delete {
+    background-color: var(--red);
+    color: var(--white);
+    text-align: center;
+}
+
+.btn-delete:hover {
+    background-color: #d14242;
+}
+
+.btn-del-edit-conteiner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
 }

@@ -19,6 +19,9 @@
 
     --white: rgb(250, 250, 250);
     --black: rgb(16, 16, 16);
+    --red: #ff5252;
+    --blue: #007bff;
+    --blue-hover: #0056b3;
 }
 
 *{
@@ -67,6 +70,21 @@ header {
 }
 
 .menu-button:hover {
+    background-color: var(--button-highlight-hover-color);
+}
+
+/* logo */
+.btn-home {
+    width: fit-content;
+    grid-column: 1;
+    padding: 10px 15px;
+    margin-left: 8em;
+    border-radius: 5px;
+    background-color: var(--button-highlight-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-home:hover {
     background-color: var(--button-highlight-hover-color);
 }
 
@@ -151,11 +169,11 @@ header {
 
 /* log out buton */
 .button-a.logout {
-    color: #ff5252;
+    color: var(--red);
 }
 
 .menu-item.logout-btn:hover {
-    background: #ff5252;
+    background: var(--red);
 }
 
 .menu-item.logout-btn:hover > .button-a {

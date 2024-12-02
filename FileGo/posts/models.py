@@ -18,6 +18,9 @@ class Post(models.Model):
         PRIVATE = 0, 'Private'
         PUBLISHED = 1, 'Published'
 
+    published = PublishedManager()
+    objects = models.Manager()
+
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     content = models.TextField(blank=True)
@@ -58,6 +61,9 @@ class Post(models.Model):
 
     def get_edit_url(self):
         return reverse('posts:edit_post', kwargs={'post_slug': self.slug})
+
+    def get_delete_url(self):
+        return reverse('posts:delete_post', kwargs={'slug': self.slug})
 
 
 class PostFiles(models.Model):

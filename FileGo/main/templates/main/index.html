@@ -1,27 +1,34 @@
 {% extends 'base.html' %}
+{% load static %}
 
-
-{% block content %}
-
-{% include 'main/includes/nav.html' only with title2='adsda' %}
-
-    <h1>{{ title }}</h1>
-    <ul>
-        {% for p in posts %}
-        {% if p.is_published %}
-        <li>
-            <h2>{{ p.title }}</h2>
-            <p>{{ p.content }}</p>
-            <p><a href="{% url 'post' p.id %}">Read post</a></p>
-            {% if not forloop.last %}
-            <hr>
-            {% endif %}
-        </li>
-        {% endif %}
-        {% endfor %}
-    </ul>
-
-{% include 'main/includes/nav.html' %}
-
+{% block style %}
+    <link type="text/css" rel="stylesheet" href="{% static 'main/css/index.css' %}">
 {% endblock %}
 
+{% block content %}
+    <main>
+        <div class="search-panel">
+            <form action="/search" method="get" class="search-form">
+                {% if search_field %}
+                <input type="text" name="q" value="{{ search_field }}" class="search-input" />
+                {% else %}
+                <input type="text" name="q" placeholder="Search..." class="search-input" />
+                {% endif %}
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+        <div class="container-posts-line">
+            {% for post in posts %}
+            <div class="container-post">
+                    <a href="{{ post.get_absolute_url }}"><h1>{{ post.title }}</h1></a>
+                    <a href="" class="author">By {{ post.author }}</a>
+                    <div class="content">{{ post.content|truncatechars:500 }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

@@ -42,10 +42,21 @@
                     <p id="fileName" class="file-name"></p>
                 </div>
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn-submit">Edit Post</button>
+                <!-- Submit Buttons -->
+                <div class="btn-del-edit-conteiner">
+                    <button type="submit" class="btn-submit">Edit Post</button>
+                    <a onclick="confirmFormSubmission(event)" href="{{ post.get_delete_url }}" class="btn-delete">Delete Post</a>
+                </div>
             </form>
         </div>
+        <script>
+            function confirmFormSubmission(event) {
+            const userConfirmed = confirm("Are you sure that you want delete this post?");
+            if (!userConfirmed) {
+                event.preventDefault();
+            }
+        }
+        </script>
     </main>
 {% endblock %}
 
