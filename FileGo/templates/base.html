@@ -13,20 +13,20 @@
 </head>
 <body>
      <header>
-        <a href="{% url 'main:home' %}" class="btn-home">News</a>
+        <a href="{% url 'main:home' %}" class="btn-home">FileGo</a>
         <span class="menu-button">Menu</span>
         <div class="dropdown">
             <div class="profile-header">
                 <a href="{% url 'user_profiles:profile' %}" class="profile-header profile">
-                <img src="{{ profile_img }}" alt="Profile Picture" class="profile-img">
+                <img src="{% static 'img/profile_icon.png' %}" alt="Profile Picture" class="profile-img">
                 <div class="profile-info">
                     <h4>{{ user_name }}</h4>
                 </div>
                 </a>
             </div>
             <ul class="menu">
-                <li><button class="menu-item"><a href="{% url 'user_profiles:profile' %}" class="button-a">Settings</a></button></li>
-                <li><button class="menu-item toggle-switch">
+                <li><button class="menu-item"><a href="{% url 'user_profiles:profile_settings' %}" class="button-a">Settings</a></button></li>
+                <!-- <li><button class="menu-item toggle-switch">
                     <span>Theme</span>
                     <label class="switch">
                         <input type="checkbox" id="theme-switch">
@@ -34,7 +34,7 @@
                     </label>
                     </button>
                 </li>
-                <li><button class="menu-item" ><a href="" class="button-a">Help</a></button></li>
+                <li><button class="menu-item" ><a href="" class="button-a">Help</a></button></li> -->
                 <li><button class="menu-item logout-btn"><a href="{% url 'users:logout' %}" class="button-a logout">Log Out</a></button></li>
             </ul>
         </div>

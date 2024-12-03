@@ -10,7 +10,7 @@
     <main>
         <div class="container">
             <h1>{{ post.title }}</h1>
-            <p class="author">By {{ post.author }}</p>
+            <a href="{{ post.get_author_url }}" class="author">By {{ post.author }}</a>
             <div class="content">{{ post.content }}</div>
     
             {% for file in files %}

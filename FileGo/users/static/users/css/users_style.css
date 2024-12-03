@@ -58,6 +58,7 @@ main {
 .form-button {
     width: 100%;
     padding: 10px;
+    margin-top: 15px;
     font-size: 1em;
     background-color: var(--button-highlight-color);
     border: none;
@@ -74,20 +75,4 @@ main {
 .error p {
     color: red;
     font-size: var(--font-size-main);
-}
-
-/* Footer */
-.form-footer {
-    text-align: center;
-    margin-top: 10px;
-    font-size: var(--font-size-low);
-}
-
-.form-link {
-    color: var(--highlight-text-color);
-    text-decoration: none;
-}
-
-.form-link:hover {
-    text-decoration: underline;
 }

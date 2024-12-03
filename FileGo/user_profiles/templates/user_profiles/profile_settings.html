@@ -8,8 +8,8 @@
 {% block content %}
     <main>
         <div class="container">
-            <form method="post" class="register my-form">
-                <h2 class="form-title">Registration</h2>
+            <form method="post" id="settings-form" class="register my-form">
+                <h2 class="form-title">Profile Settings</h2>
                 {% csrf_token %}
                 <input type="hidden" name="next" value="{{ next }}" />
                 {% for f in form %}
@@ -26,12 +26,19 @@
                 </div>
                 {% endfor %}
                 <div class="form-group">
-                    <button type="submit" class="form-button">Register</button>
+                    <button type="submit" class="form-button">Change Settings</button>
                 </div>
             </form>
-            <div class="form-footer">
-                <p>Do already have an account? <a href="{% url 'users:login' %}" class="form-link">Log In here</a></p>
-            </div>
         </div>
+        <script>
+            const form = document.getElementById("settings-form");
+    
+            form.addEventListener("submit", function (event) {
+                const userConfirmed = confirm("Are you sure that you want to delete this post?");
+                if (!userConfirmed) {
+                    event.preventDefault();
+                }
+            });
+        </script>
     </main>
 {% endblock %}

@@ -28,24 +28,27 @@ main{
 /* add blocktext */
 .add-blocktext {
     content: '';
-    width: 15em;
-    height: 15em;
-    padding: 1.45em;
+    height: 5em;
     border: 2px dashed var(--button-highlight-color);
-    border-radius: 1em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: 0.1s linear;
+
+    margin: 50px auto 0px auto;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-
 .first-line, .second-line {
-    width: 7em;
+    width: 5em;
     height: 0.3em;
     background-color: var(--button-highlight-color);
     border-radius: 0.3em;
+    z-index: -1;
 }
 
 .first-line {
@@ -58,52 +61,43 @@ main{
 }
 
 .add-blocktext:hover{
-    transform: scale(1.02);
+    transform: scale(1.01);
     transition: 0.1s linear;
 }
 
-/* blocktext */
-.blocktext {
-    width: 15em;
-    height: 15em;
-    padding: 1.5em;
-    border: 1px solid var(--main-border-color);
-    border-radius: 1em;
-    transition: 0.1s linear;
-    position: relative;
+/* Posts line */
+.container-post {
+    max-width: 800px;
+    margin: 50px auto;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
 }
 
-.blocktext-name {
-    overflow: hidden;
+h1 {
     font-size: var(--font-size-mid);
+    overflow: hidden;
 }
 
-.blocktext .main-text{
-    user-select: text;
-    cursor: text;
-    margin-top: 0.5em;
+h1:hover {
+    color: var(--blue-hover);
 }
 
-.blocktext:hover{
-    transform: scale(1.02);
-    transition: 0.1s linear;
+.author {
+    font-size: var(--font-size-main);
+    padding: 5px 0px;
+    margin-bottom: 15px;
 }
 
-/* .blocktext text{
-    position: relative;
-    user-select: text;
-    -webkit-user-select: text;
-    cursor: text;
-} */
+.author:hover {
+    color: var(--highlight-text-color);
+}
 
-.blocktext .overlay-link,
-.add-blocktext .overlay-link{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 1em;
-    text-decoration: none;
-    z-index: -1;
+
+.content {
+    line-height: 1.6;
+    margin-bottom: 20px;
 }

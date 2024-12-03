@@ -11,13 +11,19 @@
 
 h1 {
     font-size: var(--font-size-mid);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     overflow: hidden;
 }
 
 .author {
-    font-size: var(--font-size-low);
-    margin-bottom: 20px;
+    width: fit-content;
+    padding: 5px 0;
+    font-size: var(--font-size-main);
+    margin-bottom: 10px;
+}
+
+.author:hover {
+    color: var(--button-highlight-color);
 }
 
 .content {
@@ -86,4 +92,8 @@ h1 {
     text-align: center;
     grid-column: 3;
     justify-self: right;
+}
+
+.edit-btn:hover {
+    background-color: var(--button-highlight-hover-color);
 }

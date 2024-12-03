@@ -13,29 +13,6 @@ from django.views.generic import ListView
 
 from posts.models import Post
 
-menu = [
-    {'title': 'About FileGo', 'url_name': 'about'},
-    {'title': 'Add post', 'url_name': 'add_post'},
-    {'title': 'Contact', 'url_name': 'contact'},
-    {'title': 'Log in', 'url_name': 'login'},
-]
-
-data_db = [
-    {'id': 1, 'title': 'title 1', 'content': 'content 1', 'is_published': True},
-    {'id': 2, 'title': 'title 2', 'content': 'content 2', 'is_published': False},
-    {'id': 3, 'title': 'title 3', 'content': 'content 3', 'is_published': True},
-]
-
-
-# @login_required(login_url='main:welcome_page')
-def index(request):
-    data = {
-        'title': 'FileGo main page',
-        'menu': menu,
-        'posts': data_db,
-    }
-    return render(request, 'main/index.html')
-
 
 def welcome_page(request):
     return render(request, 'main/welcome_page.html')

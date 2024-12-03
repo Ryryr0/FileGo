@@ -21,7 +21,7 @@
             {% for post in posts %}
             <div class="container-post">
                     <a href="{{ post.get_absolute_url }}"><h1>{{ post.title }}</h1></a>
-                    <a href="" class="author">By {{ post.author }}</a>
+                    <a href="{{ post.get_author_url }}" class="author">By {{ post.author }}</a>
                     <div class="content">{{ post.content|truncatechars:500 }}</div>
                 </div>
             {% endfor %}

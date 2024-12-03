@@ -3,8 +3,8 @@ from django.contrib.auth import get_user_model
 
 
 class ProfileSettingsForm(forms.ModelForm):
-    username = forms.CharField(label='Login', disabled=True, widget=forms.TextInput(attrs={'class': 'form-input'}))
-    email = forms.CharField(label='E-mail', disabled=True, widget=forms.TextInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(label='Login', widget=forms.TextInput(attrs={'class': 'form-input'}))
+    email = forms.CharField(label='E-mail', widget=forms.TextInput(attrs={'class': 'form-input'}))
 
     class Meta:
         model = get_user_model()

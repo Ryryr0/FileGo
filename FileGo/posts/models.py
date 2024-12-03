@@ -35,9 +35,6 @@ class Post(models.Model):
             models.Index(fields=['-time_create'])
         ]
 
-    def get_absolute_url(self):
-        return reverse('posts:post', kwargs={'post_slug': self.slug})
-
     def save(self, *args, **kwargs):
         self.slug = self.generate_unique_slug()
         super().save(*args, **kwargs)
@@ -59,11 +56,17 @@ class Post(models.Model):
     def get_files(self):
         return PostFiles.objects.filter(post=self)
 
+    def get_absolute_url(self):
+        return reverse('posts:post', kwargs={'post_slug': self.slug})
+
     def get_edit_url(self):
         return reverse('posts:edit_post', kwargs={'post_slug': self.slug})
 
     def get_delete_url(self):
         return reverse('posts:delete_post', kwargs={'slug': self.slug})
+
+    def get_author_url(self):
+        return reverse('user_profiles:author_profile', kwargs={'author_post_user': self.author.pk})
 
 
 class PostFiles(models.Model):

@@ -44,12 +44,15 @@ a {
 
 /* header */
 header {
+    position: sticky;
+    top: 0;
     height: 4em;
     border: 1px solid var(--main-border-color);
     background-color: var(--main-bg-color);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
+    z-index: 10;
 }
 
 /* menu */
@@ -78,7 +81,7 @@ header {
     width: fit-content;
     grid-column: 1;
     padding: 10px 15px;
-    margin-left: 8em;
+    margin-left: 10.5em;
     border-radius: 5px;
     background-color: var(--button-highlight-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
