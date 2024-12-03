@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'messanger.apps.MessangerConfig',
     'user_profiles.apps.UserProfilesConfig',
     'posts.apps.PostsConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
