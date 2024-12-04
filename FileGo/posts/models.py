@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from autoslug import AutoSlugField
 
 
 class PublishedManager(models.Manager):
@@ -18,11 +19,11 @@ class Post(models.Model):
         PRIVATE = 0, 'Private'
         PUBLISHED = 1, 'Published'
 
-    published = PublishedManager()
     objects = models.Manager()
+    published = PublishedManager()
 
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, unique=True, db_index=True)
+    slug = AutoSlugField(populate_from='title', always_update=False, unique=True, db_index=True)
     content = models.TextField(blank=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     time_create = models.DateTimeField(auto_now_add=True)
@@ -34,24 +35,6 @@ class Post(models.Model):
         indexes = [
             models.Index(fields=['-time_create'])
         ]
-
-    def save(self, *args, **kwargs):
-        self.slug = self.generate_unique_slug()
-        super().save(*args, **kwargs)
-
-    def generate_unique_slug(self):
-        base_slug = slugify(self.title)
-        slug = base_slug
-        counter = 1
-        while Post.objects.filter(slug=slug).exists():
-            slug = f"{base_slug}-{self.generate_suffix(counter)}"
-            counter += 1
-        return slug
-
-    def generate_suffix(self, length):
-        all_symbols = string.ascii_uppercase + string.digits + string.ascii_lowercase
-        result = ''.join(random.choice(all_symbols) for _ in range(length))
-        return result
 
     def get_files(self):
         return PostFiles.objects.filter(post=self)
